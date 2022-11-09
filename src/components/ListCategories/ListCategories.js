@@ -15,7 +15,8 @@ class ListCategories extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <section>
+      <section className="categories-container">
+        <p className="categories-title">Categorias</p>
         {categories.map((category) => (
           <div key={ category.id }>
             <button

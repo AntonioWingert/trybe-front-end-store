@@ -1,3 +1,18 @@
+.categories-container {
+  background-color: white;
+  padding: 20px;
+  text-align: start;
+  width: 350px;
+}
+
 button {
   background-color: white;
+  border: none;
+  padding: 5px;
+}
+
+.categories-title {
+  border-bottom: 1px solid rgb(176, 179, 187);
+  font-size: 25px;
+  margin-bottom: 15px;
 }
