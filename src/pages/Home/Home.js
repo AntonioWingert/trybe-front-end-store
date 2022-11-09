@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListCategories from '../../components/ListCategories';
 import './Home.css';
 
 class Home extends Component {
@@ -14,12 +15,15 @@ class Home extends Component {
       <section>
         { validProducts
           && (
-            <p
-              data-testid="home-initial-message"
-            >
-              Digite algum termo de pesquisa ou escolha uma categoria.
+            <>
+              <ListCategories />
+              <p
+                data-testid="home-initial-message"
+              >
+                Digite algum termo de pesquisa ou escolha uma categoria.
 
-            </p>
+              </p>
+            </>
           )}
       </section>
     );
