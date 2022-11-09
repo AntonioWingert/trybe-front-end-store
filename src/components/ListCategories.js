@@ -17,16 +17,14 @@ class ListCategories extends Component {
     return (
       <section>
         {categories.map((category) => (
-          <>
-            <br />
+          <div key={ category.id }>
             <button
               type="button"
-              key={ category.id }
               data-testid="category"
             >
-              {category.id}
+              {category.name}
             </button>
-          </>
+          </div>
         ))}
       </section>
     );
