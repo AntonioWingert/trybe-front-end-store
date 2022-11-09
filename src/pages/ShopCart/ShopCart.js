@@ -14,6 +14,7 @@ class ShopCart extends Component {
         <div>
           <span
             data-testid="shopping-cart-empty-message"
+            className="cart-text"
           >
             Seu carrinho está vazio
 
