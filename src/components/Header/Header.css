@@ -29,6 +29,10 @@
   font-size: 25px;
 }
 
+.button-search {
+  border: none;
+}
+
 .title-container {
   margin-right: 250px;
 

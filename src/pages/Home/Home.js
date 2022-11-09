@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import ListCategories from '../../components/ListCategories/ListCategories';
 import Header from '../../components/Header/Header';
+import { getProductsFromQuery } from '../../services/api';
 import './Home.css';
+import ListResults from '../../components/ListResults';
 
 class Home extends Component {
   state = {
     productsList: [],
+    query: '',
+    searchResults: [],
+  };
+
+  handleChange = ({ target }) => {
+    this.setState({ query: target.value });
+  };
+
+  handleClick = async () => {
+    const { query } = this.state;
+    const data = await getProductsFromQuery(query);
+    this.setState({ searchResults: data.results });
   };
 
   render() {
-    const { productsList } = this.state;
+    const { productsList, query, searchResults } = this.state;
     const validProducts = productsList.length < 1;
 
     return (
@@ -17,8 +31,14 @@ class Home extends Component {
         { validProducts
           && (
             <>
-              <Header />
+              <Header
+                query={ query }
+                handleChange={ this.handleChange }
+                handleClick={ this.handleClick }
+              />
+              <ListResults searchResults={ searchResults } />
               <ListCategories />
+
               <div className="message-container">
                 <p className="main-title">
                   Você ainda não
