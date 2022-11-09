@@ -5,10 +5,11 @@ import Home from './pages/Home/Home';
 
 function App() {
   return (
+    </div>
     <Route exact path="/">
       <Home />
     </Route>
-
+    </div>
   );
 }
 
