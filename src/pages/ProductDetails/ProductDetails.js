@@ -19,6 +19,14 @@ class ProductDetails extends Component {
     this.setState({ title, price, thumbnail });
   }
 
+  addItem = () => {
+    this.setState((state) => ({ itemsQuantity: state.itemsQuantity + 1 }));
+  };
+
+  removeItem = () => {
+    this.setState((state) => ({ itemsQuantity: state.itemsQuantity - 1 }));
+  };
+
   render() {
     const { price, title, thumbnail, itemsQuantity } = this.state;
     return (
@@ -29,7 +37,11 @@ class ProductDetails extends Component {
         <h2 data-testid="product-detail-price">
           { `R$: ${price}` }
         </h2>
-        <CartItemsManipulator itemsQuantity={ itemsQuantity } />
+        <CartItemsManipulator
+          itemsQuantity={ itemsQuantity }
+          addItem={ this.addItem }
+          removeItem={ this.removeItem }
+        />
       </section>
     );
   }
