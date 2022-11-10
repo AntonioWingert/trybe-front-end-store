@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProductById } from '../../services/api';
+import ProductRating from '../../components/ProductRating/ProductRating';
 import Header from '../../components/Header/Header';
 import CartItemsManipulator from
   '../../components/CartItemsManipulator/CartItemsManipulator';
@@ -43,6 +44,7 @@ class ProductDetails extends Component {
   };
 
   render() {
+    const { match: { params: { id } } } = this.props;
     const { price, title, thumbnail, itemsQuantity } = this.state;
     return (
       <section className="product-page">
@@ -52,6 +54,7 @@ class ProductDetails extends Component {
         <h2 data-testid="product-detail-price">
           { `R$: ${price}` }
         </h2>
+        <ProductRating id={ id } />
         <CartItemsManipulator
           itemsQuantity={ itemsQuantity }
           addItem={ this.addItem }
