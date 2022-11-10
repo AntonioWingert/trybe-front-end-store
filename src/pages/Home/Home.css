@@ -7,6 +7,11 @@
   justify-content: center;
 }
 
+.main-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .main-title {
   color: rgb(49, 194, 141);
 }

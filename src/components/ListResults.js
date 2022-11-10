@@ -16,8 +16,7 @@ export default class ListResults extends Component {
 
     return (
       <div>
-        { (Object.entries(renderResults).length === 0)
-          ? <h1>Nenhum produto foi encontrado</h1> : renderResults}
+        { renderResults.length > 0 && renderResults }
       </div>
     );
   }
