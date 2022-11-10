@@ -5,3 +5,18 @@
 .product-rating {
   font-size: 2em;
 }
+
+.error-msg {
+  color: red;
+}
+
+.description-card, .form-card {
+  border: 1px solid black;
+  margin: 2px;
+  padding: 2px;
+}
+
+.email-rating-card {
+  display: flex;
+  justify-content: space-between;
+}

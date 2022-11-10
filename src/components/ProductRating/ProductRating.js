@@ -57,7 +57,7 @@ class ProductRating extends Component {
   };
 
   render() {
-    const { email, description, rating, error, formStorage } = this.state;
+    const { email, description, error, formStorage } = this.state;
 
     const createRatingStars = (number) => {
       const tempRating = [];
@@ -77,27 +77,29 @@ class ProductRating extends Component {
 
     return (
       <>
-        <section>
+        <section className="form-card">
           <div>
             <input
               type="email"
               name="email"
               data-testid="product-detail-email"
+              placeholder="E-mail"
               onChange={ this.handleChange }
               value={ email }
             />
             <div className="product-rating-div">
               { showStars }
-              { rating }
             </div>
           </div>
           <textarea
             name="description"
             id="description"
+            placeholder="Descrição"
             data-testid="product-detail-evaluation"
             onChange={ this.handleChange }
             value={ description }
           />
+          <br />
           <button
             type="button"
             data-testid="submit-review-btn"
@@ -105,16 +107,24 @@ class ProductRating extends Component {
           >
             Avaliar
           </button>
-          {error && <h4 data-testid="error-msg">Campos inválidos</h4>}
+          {error && (
+            <h4
+              data-testid="error-msg"
+              className="error-msg"
+            >
+              Campos inválidos
+            </h4>)}
         </section>
         <section>
           {formStorage.length > 0 && (
             <div>
               {formStorage.map((item) => (
-                <div key={ item.email }>
-                  <h4 data-testid="review-card-email">{item.email}</h4>
-                  <h5 data-testid="review-card-evaluation">{item.description}</h5>
-                  <h5 data-testid="review-card-rating">{item.rating}</h5>
+                <div key={ item.email } className="description-card">
+                  <div className="email-rating-card">
+                    <h4 data-testid="review-card-email">{item.email}</h4>
+                    <h5 data-testid="review-card-rating">{item.rating}</h5>
+                  </div>
+                  <p data-testid="review-card-evaluation">{item.description}</p>
                 </div>
               ))}
             </div>
