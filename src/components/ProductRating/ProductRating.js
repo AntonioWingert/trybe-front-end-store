@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AiOutlineStar } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 import './ProductRating.css';
 
 const RATING = 5;
@@ -7,31 +8,52 @@ const RATING = 5;
 class ProductRating extends Component {
   state = {
     email: '',
-    rating: 0,
+    rating: '',
     description: '',
     error: false,
     formStorage: [],
   };
+
+  componentDidMount() {
+    const { id } = this.props;
+    if (localStorage[id]) {
+      const savedStorage = JSON.parse(localStorage.getItem(id));
+      this.setState({ formStorage: savedStorage });
+    }
+  }
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
+  validateForm = () => {
+    const { email, rating } = this.state;
+    if (!email || !rating || !email.includes('@')) {
+      this.setState({ error: true });
+    } else {
+      this.setState({ error: false });
+    }
+  };
+
   handleRating = (e) => {
     const { id } = e.target;
-    this.setState({ rating: id });
+    this.setState({ rating: id }, this.validateForm);
   };
 
   handleClick = () => {
     const { description, email, rating, formStorage } = this.state;
-    if (!description || !email || !rating) {
+    const { id } = this.props;
+    if (!email || !rating || !email.includes('@')) {
       this.setState({ error: true });
       return;
     }
     const newForm = { description, email, rating };
     const newFormStorage = [...formStorage, newForm];
-    this.setState({ email: '', rating: 0, description: '', formStorage: newFormStorage });
+    localStorage.setItem(id, JSON.stringify(newFormStorage));
+    this.setState({
+      email: '', rating: 0, description: '', error: false, formStorage: newFormStorage,
+    });
   };
 
   render() {
@@ -109,5 +131,9 @@ class ProductRating extends Component {
 // <AiOutlineStar className="product-rating" data-testid="$3-rating" id="3" onClick={ this.handleRating } />
 // <AiOutlineStar className="product-rating" data-testid="$4-rating" id="4" onClick={ this.handleRating } />
 // <AiOutlineStar className="product-rating" data-testid="$5-rating" id="5" onClick={ this.handleRating } />  */}
+
+ProductRating.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default ProductRating;

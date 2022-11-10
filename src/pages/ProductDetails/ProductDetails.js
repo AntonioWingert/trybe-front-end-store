@@ -18,6 +18,7 @@ class ProductDetails extends Component {
   }
 
   render() {
+    const { match: { params: { id } } } = this.props;
     const { price, title, thumbnail } = this.state;
     return (
       <section className="product-page">
@@ -31,7 +32,7 @@ class ProductDetails extends Component {
         <button type="button" data-testid="shopping-cart-button">
           <Link to="/cart">Carrinho</Link>
         </button>
-        <ProductRating />
+        <ProductRating id={ id } />
       </section>
     );
   }
