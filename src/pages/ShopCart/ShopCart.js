@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import CartList from '../../components/CartList/CartList';
 import Header from '../../components/Header/Header';
+import { getLocalStorage } from '../../services/LocalStorage';
 import './ShopCart.css';
 
 class ShopCart extends Component {
   state = {
     buyList: [],
+  };
+
+  componentDidMount() {
+    this.getStorage();
+  }
+
+  getStorage = () => {
+    const localStorage = getLocalStorage();
+    this.setState({
+      buyList: localStorage,
+    });
   };
 
   render() {
@@ -31,7 +44,17 @@ class ShopCart extends Component {
         <span
           data-testid="shopping-cart-product-name"
         >
-          Carrinho com itens
+          {
+            buyList.map(({ price, title, thumbnail, itemsQuantity }) => (
+              <CartList
+                key={ title }
+                price={ price }
+                title={ title }
+                thumbnail={ thumbnail }
+                itemsQuantity={ itemsQuantity }
+
+              />))
+          }
 
         </span>
       </main>

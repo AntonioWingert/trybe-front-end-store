@@ -7,4 +7,5 @@ export const setLocalStorage = (items) => {
 export const getLocalStorage = () => {
   const returnedItems = localStorage.getItem('LOCALSTORAGEITEMS');
   if (returnedItems) return JSON.parse(returnedItems);
+  return [];
 };

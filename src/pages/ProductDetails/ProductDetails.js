@@ -4,6 +4,8 @@ import { getProductById } from '../../services/api';
 import Header from '../../components/Header/Header';
 import CartItemsManipulator from
   '../../components/CartItemsManipulator/CartItemsManipulator';
+import { setLocalStorage, getLocalStorage } from '../../services/LocalStorage';
+import AddButton from '../../components/AddButton/AddButton';
 
 class ProductDetails extends Component {
   state = {
@@ -18,6 +20,19 @@ class ProductDetails extends Component {
     const { title, price, thumbnail } = await getProductById(id);
     this.setState({ title, price, thumbnail });
   }
+
+  saveItemStorage = () => {
+    const { price, title, thumbnail, itemsQuantity } = this.state;
+    const objItem = {
+      price,
+      title,
+      thumbnail,
+      itemsQuantity,
+    };
+    const localStorage = getLocalStorage();
+    const newLocalStorage = [...localStorage, objItem];
+    setLocalStorage(JSON.stringify(newLocalStorage));
+  };
 
   addItem = () => {
     this.setState((state) => ({ itemsQuantity: state.itemsQuantity + 1 }));
@@ -42,6 +57,7 @@ class ProductDetails extends Component {
           addItem={ this.addItem }
           removeItem={ this.removeItem }
         />
+        <AddButton saveItemStorage={ this.saveItemStorage } />
       </section>
     );
   }

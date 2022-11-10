@@ -8,8 +8,9 @@ class CartItemsManipulator extends Component {
     return (
       <>
         <button type="button" onClick={ addItem }>+</button>
+        <div data-testid="shopping-cart-product-quantity">{ itemsQuantity }</div>
         <button type="button" onClick={ removeItem }>-</button>
-        <div>{ itemsQuantity }</div>
+
       </>
     );
   }
