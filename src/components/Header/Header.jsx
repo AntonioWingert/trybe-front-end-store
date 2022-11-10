@@ -28,10 +28,10 @@ class Header extends Component {
             <MdOutlineSearch className="search-icon" />
           </button>
         </div>
-        <div className="title-container">
+        <Link to="/" className="title-container">
           <h1 className="title">FRONT-END</h1>
           <h3 className="sub-title">online store</h3>
-        </div>
+        </Link>
         <div>
           <Link
             to="/cart"
