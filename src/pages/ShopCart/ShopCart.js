@@ -28,7 +28,12 @@ class ShopCart extends Component {
     return (
       <main>
         <Header />
-        <span>Carrinho com itens</span>
+        <span
+          data-testid="shopping-cart-product-name"
+        >
+          Carrinho com itens
+
+        </span>
       </main>
     );
   }

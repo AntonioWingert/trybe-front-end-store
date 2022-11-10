@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { getProductById } from '../../services/api';
+import Header from '../../components/Header/Header';
+import CartItemsManipulator from
+  '../../components/CartItemsManipulator/CartItemsManipulator';
 
 class ProductDetails extends Component {
   state = {
     price: 0,
     title: '',
     thumbnail: '',
+    itemsQuantity: 1,
   };
 
   async componentDidMount() {
@@ -17,19 +20,16 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { price, title, thumbnail } = this.state;
+    const { price, title, thumbnail, itemsQuantity } = this.state;
     return (
       <section className="product-page">
+        <Header />
         <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
         <h1 data-testid="product-detail-name">{ title }</h1>
         <h2 data-testid="product-detail-price">
-          R$
-          {' '}
-          { price }
+          { `R$: ${price}` }
         </h2>
-        <button type="button" data-testid="shopping-cart-button">
-          <Link to="/cart">Carrinho</Link>
-        </button>
+        <CartItemsManipulator itemsQuantity={ itemsQuantity } />
       </section>
     );
   }
