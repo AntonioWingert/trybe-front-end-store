@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListCategories from '../../components/ListCategories/ListCategories';
 import Header from '../../components/Header/Header';
-import { getProductsFromQuery } from '../../services/api';
+import { getProductsFromQuery, getProductsFromCategory } from '../../services/api';
 import './Home.css';
 import ListResults from '../../components/ListResults';
 
@@ -10,6 +10,7 @@ class Home extends Component {
     productsList: [],
     query: '',
     searchResults: [],
+    checkSearch: 0,
   };
 
   handleChange = ({ target }) => {
@@ -19,11 +20,16 @@ class Home extends Component {
   handleClick = async () => {
     const { query } = this.state;
     const data = await getProductsFromQuery(query);
+    this.setState({ searchResults: data.results, checkSearch: 1 });
+  };
+
+  returnState = async (_e, id) => {
+    const data = await getProductsFromCategory(id);
     this.setState({ searchResults: data.results });
   };
 
   render() {
-    const { productsList, query, searchResults } = this.state;
+    const { productsList, query, searchResults, checkSearch } = this.state;
     const validProducts = productsList.length < 1;
 
     return (
@@ -36,21 +42,25 @@ class Home extends Component {
                 handleChange={ this.handleChange }
                 handleClick={ this.handleClick }
               />
-              <ListResults searchResults={ searchResults } />
-              <ListCategories />
-
-              <div className="message-container">
-                <p className="main-title">
-                  Você ainda não
-                  realizou uma busca
-                </p>
-                <p
-                  data-testid="home-initial-message"
-                  className="message-empty-list"
-                >
-                  Digite algum termo de pesquisa ou escolha uma categoria.
-                </p>
-              </div>
+              <ListResults
+                searchResults={ searchResults }
+              />
+              <section className="main-container">
+                <ListCategories returnState={ (e, id) => this.returnState(e, id) } />
+                <div className="message-container">
+                  <p className="main-title">
+                    { checkSearch
+                      ? 'Nenhum produto foi encontrado'
+                      : 'Você ainda não realizou uma busca'}
+                  </p>
+                  <p
+                    data-testid="home-initial-message"
+                    className="message-empty-list"
+                  >
+                    Digite algum termo de pesquisa ou escolha uma categoria.
+                  </p>
+                </div>
+              </section>
             </>
           )}
       </section>

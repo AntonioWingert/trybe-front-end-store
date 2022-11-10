@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ProductCard from './ProductCard/ProductCard';
 
 export default class ListResults extends Component {
   render() {
     const { searchResults } = this.props;
     const renderResults = searchResults.map(({ id, title, price, thumbnail }) => (
-      <div
-        data-testid="product"
+      <ProductCard
         key={ id }
-      >
-        <h4>{ title }</h4>
-        <h5>{ price }</h5>
-        <img src={ thumbnail } alt={ `${title} ${id}` } />
-      </div>));
+        id={ id }
+        title={ title }
+        price={ price }
+        thumbnail={ thumbnail }
+      />
+    ));
 
     return (
       <div>
-        { (Object.entries(renderResults).length === 0)
-          ? <h1>Nenhum produto foi encontrado</h1> : renderResults}
+        { renderResults.length > 0 && renderResults }
       </div>
     );
   }
