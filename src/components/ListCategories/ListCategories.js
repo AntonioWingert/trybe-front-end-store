@@ -17,7 +17,8 @@ class ListCategories extends Component {
     const { categories } = this.state;
     const { returnState } = this.props;
     return (
-      <section>
+      <section className="categories-container">
+        <p className="categories-title">Categorias</p>
         {categories.map((category) => (
           <div key={ category.id }>
             <button
