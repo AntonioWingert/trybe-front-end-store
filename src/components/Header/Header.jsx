@@ -47,10 +47,16 @@ class Header extends Component {
   }
 }
 
+Header.defaultProps = {
+  query: '',
+  handleChange: () => {},
+  handleClick: () => {},
+};
+
 Header.propTypes = {
-  query: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  query: PropTypes.string,
+  handleChange: PropTypes.func,
+  handleClick: PropTypes.func,
 };
 
 export default Header;
