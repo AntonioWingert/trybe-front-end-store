@@ -1,0 +1,7 @@
+.product-rating-div {
+  display: flex;
+}
+
+.product-rating {
+  font-size: 2em;
+}

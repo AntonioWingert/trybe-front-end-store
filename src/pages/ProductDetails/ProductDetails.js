@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductById } from '../../services/api';
+import ProductRating from '../../components/ProductRating/ProductRating';
 
 class ProductDetails extends Component {
   state = {
@@ -30,6 +31,7 @@ class ProductDetails extends Component {
         <button type="button" data-testid="shopping-cart-button">
           <Link to="/cart">Carrinho</Link>
         </button>
+        <ProductRating />
       </section>
     );
   }
