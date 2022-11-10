@@ -22,6 +22,10 @@ class Home extends Component {
     this.setState({ searchResults: data.results });
   };
 
+  returnState = (_e, id) => {
+    console.log(id);
+  };
+
   render() {
     const { productsList, query, searchResults } = this.state;
     const validProducts = productsList.length < 1;
@@ -36,8 +40,10 @@ class Home extends Component {
                 handleChange={ this.handleChange }
                 handleClick={ this.handleClick }
               />
-              <ListResults searchResults={ searchResults } />
-              <ListCategories />
+              <ListResults
+                searchResults={ searchResults }
+              />
+              <ListCategories returnState={ (e, id) => this.returnState(e, id) } />
 
               <div className="message-container">
                 <p className="main-title">

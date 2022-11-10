@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getCategories } from '../../services/api';
 import './ListCategories.css';
 
@@ -14,6 +15,7 @@ class ListCategories extends Component {
 
   render() {
     const { categories } = this.state;
+    const { returnState } = this.props;
     return (
       <section>
         {categories.map((category) => (
@@ -21,6 +23,7 @@ class ListCategories extends Component {
             <button
               type="button"
               data-testid="category"
+              onClick={ (e) => returnState(e, category.id) }
             >
               {category.name}
             </button>
@@ -30,5 +33,9 @@ class ListCategories extends Component {
     );
   }
 }
+
+ListCategories.propTypes = {
+  returnState: PropTypes.func.isRequired,
+};
 
 export default ListCategories;
