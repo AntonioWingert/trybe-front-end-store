@@ -40,6 +40,12 @@ class Home extends Component {
     this.setState({ searchResults: data.results });
   };
 
+  isFreeShipping = (shipParam) => {
+    if (shipParam === true) {
+      return <p data-testid="free-shipping">Frete Gratis</p>;
+    } return null;
+  };
+
   render() {
     const { productsList, query, searchResults, checkSearch, itemsOnCart } = this.state;
     const validProducts = productsList.length < 1;
@@ -76,6 +82,7 @@ class Home extends Component {
                     <ListResults
                       searchResults={ searchResults }
                       updateState={ this.updateState }
+                      isFreeShipping={ this.isFreeShipping }
                     />)}
               </section>
             </>

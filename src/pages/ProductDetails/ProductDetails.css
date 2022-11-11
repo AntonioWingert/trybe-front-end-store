@@ -70,3 +70,20 @@
   height: 95vh;
   width: 100vw;
 }
+
+.free-shipping-image {
+  height: 100px;
+  margin: 25px;
+  position: absolute;
+  right: 500px;
+  width: 100px;
+
+}
+
+@media screen and ( max-width : 1500px ) {
+
+  .free-shipping-image {
+    position: absolute;
+    right: 25%;
+  }
+}
