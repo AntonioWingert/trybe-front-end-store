@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AddButton from '../AddButton/AddButton';
-import CartItemsManipulator from '../CartItemsManipulator/CartItemsManipulator';
 import './CartList.css';
+import StateManipulator from '../StateManipulator/StateManipulator';
 
 class CartList extends Component {
   render() {
-    const { price, title, thumbnail, itemsQuantity } = this.props;
+    const { price, title, thumbnail, itemsQuantity, handleDelete, id } = this.props;
     return (
       <main>
         <h1>
           <div className="product-container">
             <img src={ thumbnail } alt={ title } />
-            {title}
-            <CartItemsManipulator itemsQuantity={ itemsQuantity } />
+            <span data-testid="shopping-cart-product-name">{title}</span>
+            <StateManipulator itemsQuantity={ itemsQuantity } />
             {price}
-            <AddButton />
+            <button
+              type="button"
+              data-testid="remove-product"
+              onClick={ (e) => handleDelete(e, id) }
+            >
+              X
+            </button>
           </div>
         </h1>
       </main>
@@ -23,11 +28,17 @@ class CartList extends Component {
   }
 }
 
+CartList.defaultProps = {
+  id: '',
+};
+
 CartList.propTypes = {
   price: PropTypes.number.isRequired,
+  id: PropTypes.string,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   itemsQuantity: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default CartList;
