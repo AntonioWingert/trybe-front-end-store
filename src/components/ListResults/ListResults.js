@@ -7,16 +7,20 @@ export default class ListResults extends Component {
   render() {
     const { searchResults, updateState, isFreeShipping } = this.props;
     const renderResults = searchResults
-      .map(({ id, title, price, thumbnail, shipping: { free_shipping } }) => (
-        <ProductCard
-          key={ id }
-          id={ id }
-          title={ title }
-          price={ price }
-          thumbnail={ thumbnail }
-          updateState={ updateState }
-          isFreeShipping={ isFreeShipping(free_shipping) }
-        />
+      .map(({
+        id, title, price, thumbnail,
+        shipping: { free_shipping: freeShipping } }) => (
+        (
+          <ProductCard
+            key={ id }
+            id={ id }
+            title={ title }
+            price={ price }
+            thumbnail={ thumbnail }
+            updateState={ updateState }
+            isFreeShipping={ isFreeShipping(freeShipping) }
+          />
+        )
       ));
 
     return (
