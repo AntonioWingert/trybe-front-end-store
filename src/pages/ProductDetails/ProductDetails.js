@@ -13,22 +13,24 @@ class ProductDetails extends Component {
     price: 0,
     title: '',
     thumbnail: '',
+    productID: '',
     itemsQuantity: 1,
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const { title, price, thumbnail } = await getProductById(id);
-    this.setState({ title, price, thumbnail });
+    this.setState({ title, price, thumbnail, productID: id });
   }
 
   saveItemStorage = () => {
-    const { price, title, thumbnail, itemsQuantity } = this.state;
+    const { price, title, thumbnail, itemsQuantity, productID } = this.state;
     const objItem = {
       price,
       title,
       thumbnail,
       itemsQuantity,
+      productID,
     };
     const localStorage = getLocalStorage();
     const newLocalStorage = [...localStorage, objItem];
