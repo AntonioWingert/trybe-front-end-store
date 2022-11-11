@@ -18,13 +18,21 @@ class ProductDetails extends Component {
     thumbnail: '',
     productID: '',
     itemsQuantity: 1,
+    itemsOnCart: 0,
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const { title, price, thumbnail } = await getProductById(id);
     this.setState({ title, price, thumbnail, productID: id });
+    this.updateState();
   }
+
+  updateState = () => {
+    const localStorage = getLocalStorage();
+    const localLength = Number(localStorage.length);
+    this.setState({ itemsOnCart: localLength });
+  };
 
   saveItemStorage = () => {
     const { price, title, thumbnail, itemsQuantity, productID } = this.state;
@@ -38,6 +46,7 @@ class ProductDetails extends Component {
     const localStorage = getLocalStorage();
     const newLocalStorage = [...localStorage, objItem];
     setLocalStorage(JSON.stringify(newLocalStorage));
+    this.updateState();
   };
 
   addItem = () => {
@@ -50,10 +59,10 @@ class ProductDetails extends Component {
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { price, title, thumbnail, itemsQuantity } = this.state;
+    const { price, title, thumbnail, itemsQuantity, itemsOnCart } = this.state;
     return (
       <div>
-        <Header />
+        <Header itemsOnCart={ itemsOnCart } />
         <Link to="/" className="return-button">
           <TiArrowBack />
           Voltar

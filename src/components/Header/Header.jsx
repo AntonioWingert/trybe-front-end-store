@@ -7,7 +7,7 @@ import './Header.css';
 
 class Header extends Component {
   render() {
-    const { query, handleChange, handleClick } = this.props;
+    const { query, handleChange, handleClick, itemsOnCart } = this.props;
     return (
       <header className="container">
         <div className="header-container">
@@ -33,12 +33,19 @@ class Header extends Component {
             <h1 className="title">FRONT-END</h1>
             <h3 className="sub-title">online store</h3>
           </Link>
-          <div>
+          <div className="cart-button-container">
             <Link
               to="/cart"
               data-testid="shopping-cart-button"
             >
               <MdOutlineShoppingCart className="cart-icon" />
+              <span
+                className="cart-button-span"
+                data-testid="shopping-cart-size"
+              >
+                { itemsOnCart }
+
+              </span>
             </Link>
           </div>
         </div>
@@ -51,12 +58,14 @@ Header.defaultProps = {
   query: '',
   handleChange: () => {},
   handleClick: () => {},
+  itemsOnCart: 0,
 };
 
 Header.propTypes = {
   query: PropTypes.string,
   handleChange: PropTypes.func,
   handleClick: PropTypes.func,
+  itemsOnCart: PropTypes.number,
 };
 
 export default Header;
