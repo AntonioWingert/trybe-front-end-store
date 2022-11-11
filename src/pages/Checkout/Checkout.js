@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom';
-// import { Link } from 'react-router-dom/cjs/react-router-dom';
-// import { TiArrowBack } from 'react-icons/ti';
+import { Redirect, Link } from 'react-router-dom/cjs/react-router-dom';
+import { TiArrowBack } from 'react-icons/ti';
+import Header from '../../components/Header/Header';
 import { getLocalStorage } from '../../services/LocalStorage';
 import './Checkout.css';
 
@@ -79,10 +79,11 @@ class Checkout extends Component {
 
     return (
       <main>
-        {/* <Link to="/" className="return-button-checkout">
+        <Link to="/" className="return-button-checkout">
           <TiArrowBack />
           Voltar
-        </Link> */}
+        </Link>
+        <Header />
         <section>
           <div>
             {productsList.map((product) => (
