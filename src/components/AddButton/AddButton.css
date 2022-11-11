@@ -1,3 +1,6 @@
-body {
-  margin: 0%;
+.button-add-details {
+  background-color: #31c28d;
+  color: white;
+  padding: 15px;
+  width: 30%;
 }
