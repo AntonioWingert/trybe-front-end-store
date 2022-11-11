@@ -1,22 +1,97 @@
-.product-rating-div {
+.form-card {
+  background-color: white;
   display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 95%;
 }
 
-.product-rating {
-  font-size: 2em;
+.form-input-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 .error-msg {
+  align-items: center;
   color: red;
+  font-size: 25px;
+  margin: auto;
+  text-align: center;
+  width: 25%;
 }
 
-.description-card, .form-card {
-  border: 1px solid black;
-  margin: 2px;
-  padding: 2px;
+.form-title {
+  font-size: 25px;
+  padding: 25px;
+  text-align: center;
+}
+
+.product-detail-email {
+  border: 1px solid #94979d;
+  height: 50px;
+  padding: 10px;
+  width: 90%;
+}
+
+.product-detail-description {
+  align-content: center;
+  border: 1px solid #94979d;
+  height: 200px;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.button-product-description {
+  background-color: #31c28d;
+  color: white;
+  font-size: 20px;
+  margin: 25px auto;
+  padding: 20px;
+  width: 20%;
+}
+
+.wrap-inputs {
+  margin: auto;
+  width: 30%;
 }
 
 .email-rating-card {
   display: flex;
+  font-size: 20px;
   justify-content: space-between;
+  width: 400px;
+}
+
+.product-rating-div {
+  display: flex;
+  margin-left: 15px;
+}
+
+.product-rating {
+  color: #94979d;
+  font-size: 2em;
+}
+
+.available-comments-container {
+  background-color: white;
+  height: max-content;
+  margin: 15px auto;
+  width: 95%;
+}
+
+.description-card {
+  border-bottom: 15px solid #ececec;
+  height: fit-content;
+  padding: 15px;
+}
+
+.review-card-evaluation {
+  color: #94979d;
+  font-size: 16px;
+  padding: 20px;
+  text-align: justify;
 }

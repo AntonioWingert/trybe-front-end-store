@@ -79,12 +79,12 @@ class Checkout extends Component {
 
     return (
       <main>
-        <Link to="/" className="return-button-checkout">
-          <TiArrowBack />
-          Voltar
-        </Link>
         <Header />
         <section>
+          <Link to="/" className="return-button-checkout">
+            <TiArrowBack />
+            Voltar
+          </Link>
           <div>
             {productsList.map((product) => (
               <h4 key={ product.productID }>{product.title}</h4>
