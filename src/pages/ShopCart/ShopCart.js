@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CartList from '../../components/CartList/CartList';
 import Header from '../../components/Header/Header';
 import { getLocalStorage, setLocalStorage } from '../../services/LocalStorage';
@@ -49,21 +50,23 @@ class ShopCart extends Component {
     return (
       <main>
         <Header itemsOnCart={ itemsOnCart } />
-        <span>
-          {
-            buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
-              <CartList
-                key={ title }
-                id={ productID }
-                price={ price }
-                title={ title }
-                thumbnail={ thumbnail }
-                itemsQuantity={ itemsQuantity }
-                handleDelete={ (e, str) => this.handleDelete(e, str) }
-              />))
-          }
-
-        </span>
+        <section>
+          <div>
+            {
+              buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
+                <CartList
+                  key={ title }
+                  id={ productID }
+                  price={ price }
+                  title={ title }
+                  thumbnail={ thumbnail }
+                  itemsQuantity={ itemsQuantity }
+                  handleDelete={ (e, str) => this.handleDelete(e, str) }
+                />))
+            }
+          </div>
+          <Link to="/checkout" data-testid="checkout-products">Finalizar</Link>
+        </section>
       </main>
     );
   }

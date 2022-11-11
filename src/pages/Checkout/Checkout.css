@@ -1,0 +1,8 @@
+.return-button-checkout {
+  align-items: center;
+  color: #2fc18c;
+  display: flex;
+  font-size: 15px;
+  margin: 5px;
+  text-decoration: none;
+}
