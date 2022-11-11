@@ -14,7 +14,7 @@ class ProductCard extends Component {
   };
 
   render() {
-    const { title, price, thumbnail, id: productID } = this.props;
+    const { title, price, thumbnail, id: productID, isFreeShipping } = this.props;
     const sendObj = { title, price, thumbnail, productID, itemsQuantity: 1 };
     return (
       <div
@@ -32,6 +32,7 @@ class ProductCard extends Component {
             alt={ `${title} ${productID}` }
           />
           <h4 className="product-title">{ title }</h4>
+          <span>{ isFreeShipping }</span>
           <h5 className="product-price">{ `R$: ${Number(price).toFixed(2)}`}</h5>
 
         </Link>
@@ -54,6 +55,7 @@ ProductCard.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  isFreeShipping: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

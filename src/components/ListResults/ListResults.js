@@ -5,17 +5,19 @@ import ProductCard from '../ProductCard/ProductCard';
 
 export default class ListResults extends Component {
   render() {
-    const { searchResults, updateState } = this.props;
-    const renderResults = searchResults.map(({ id, title, price, thumbnail }) => (
-      <ProductCard
-        key={ id }
-        id={ id }
-        title={ title }
-        price={ price }
-        thumbnail={ thumbnail }
-        updateState={ updateState }
-      />
-    ));
+    const { searchResults, updateState, isFreeShipping } = this.props;
+    const renderResults = searchResults
+      .map(({ id, title, price, thumbnail, shipping: { free_shipping } }) => (
+        <ProductCard
+          key={ id }
+          id={ id }
+          title={ title }
+          price={ price }
+          thumbnail={ thumbnail }
+          updateState={ updateState }
+          isFreeShipping={ isFreeShipping(free_shipping) }
+        />
+      ));
 
     return (
       <div className="list-container">
@@ -37,4 +39,5 @@ ListResults.propTypes = {
     }),
   ),
   updateState: PropTypes.func.isRequired,
+  isFreeShipping: PropTypes.func.isRequired,
 };
