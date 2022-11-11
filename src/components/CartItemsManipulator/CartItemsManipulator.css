@@ -1,3 +1,13 @@
-body {
-  margin: 0;
+.items-manipulator-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+}
+
+.items-container {
+  background-color: #b0b3bb;
+  border-radius: 50%;
+  color: white;
+  width: 20px;
 }

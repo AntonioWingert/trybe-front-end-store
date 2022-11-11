@@ -3,7 +3,7 @@ import ListCategories from '../../components/ListCategories/ListCategories';
 import Header from '../../components/Header/Header';
 import { getProductsFromQuery, getProductsFromCategory } from '../../services/api';
 import './Home.css';
-import ListResults from '../../components/ListResults';
+import ListResults from '../../components/ListResults/ListResults';
 
 class Home extends Component {
   state = {
@@ -42,24 +42,27 @@ class Home extends Component {
                 handleChange={ this.handleChange }
                 handleClick={ this.handleClick }
               />
-              <ListResults
-                searchResults={ searchResults }
-              />
               <section className="main-container">
                 <ListCategories returnState={ (e, id) => this.returnState(e, id) } />
-                <div className="message-container">
-                  <p className="main-title">
-                    { checkSearch
-                      ? 'Nenhum produto foi encontrado'
-                      : 'Você ainda não realizou uma busca'}
-                  </p>
-                  <p
-                    data-testid="home-initial-message"
-                    className="message-empty-list"
-                  >
-                    Digite algum termo de pesquisa ou escolha uma categoria.
-                  </p>
-                </div>
+
+                { searchResults < 1 ? (
+                  <div className="message-container">
+                    <p className="main-title">
+                      { checkSearch
+                        ? 'Nenhum produto foi encontrado'
+                        : 'Você ainda não realizou uma busca'}
+                    </p>
+                    <p
+                      data-testid="home-initial-message"
+                      className="message-empty-list"
+                    >
+                      Digite algum termo de pesquisa ou escolha uma categoria.
+                    </p>
+                  </div>)
+                  : (
+                    <ListResults
+                      searchResults={ searchResults }
+                    />)}
               </section>
             </>
           )}

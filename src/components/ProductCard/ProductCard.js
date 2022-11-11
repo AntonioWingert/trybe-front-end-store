@@ -19,18 +19,27 @@ class ProductCard extends Component {
         data-testid="product"
         className="product-card"
       >
-        <h4>{ title }</h4>
-        <h5>{ price }</h5>
-        <img src={ thumbnail } alt={ `${title} ${productID}` } />
-        <Link to={ `/product/${productID}` } data-testid="product-detail-link">
-          Detalhes
+        <Link
+          className="product-link"
+          to={ `/product/${productID}` }
+          data-testid="product-detail-link"
+        >
+          <img
+            className="product-image"
+            src={ thumbnail }
+            alt={ `${title} ${productID}` }
+          />
+          <h4 className="product-title">{ title }</h4>
+          <h5 className="product-price">{ `R$: ${Number(price).toFixed(2)}`}</h5>
+
         </Link>
         <button
+          className="product-button"
           data-testid="product-add-to-cart"
           type="button"
           onClick={ (e) => this.handleClick(e, sendObj) }
         >
-          Adicionar
+          Adicionar ao carrinho
         </button>
       </div>
     );

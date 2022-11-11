@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import './ListResults.css';
 import PropTypes from 'prop-types';
-import ProductCard from './ProductCard/ProductCard';
+import ProductCard from '../ProductCard/ProductCard';
 
 export default class ListResults extends Component {
   render() {
@@ -16,7 +17,7 @@ export default class ListResults extends Component {
     ));
 
     return (
-      <div>
+      <div className="list-container">
         { renderResults.length > 0 && renderResults }
       </div>
     );

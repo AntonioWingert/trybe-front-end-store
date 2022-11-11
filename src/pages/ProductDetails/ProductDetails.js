@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './ProductDetails.css';
+import { Link } from 'react-router-dom';
+import { TiArrowBack } from 'react-icons/ti';
 import { getProductById } from '../../services/api';
 import ProductRating from '../../components/ProductRating/ProductRating';
 import Header from '../../components/Header/Header';
@@ -49,21 +52,62 @@ class ProductDetails extends Component {
     const { match: { params: { id } } } = this.props;
     const { price, title, thumbnail, itemsQuantity } = this.state;
     return (
-      <section className="product-page">
+      <div>
         <Header />
-        <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
-        <h1 data-testid="product-detail-name">{ title }</h1>
-        <h2 data-testid="product-detail-price">
-          { `R$: ${price}` }
-        </h2>
-        <ProductRating id={ id } />
-        <CartItemsManipulator
-          itemsQuantity={ itemsQuantity }
-          addItem={ this.addItem }
-          removeItem={ this.removeItem }
-        />
-        <AddButton saveItemStorage={ this.saveItemStorage } />
-      </section>
+        <Link to="/" className="return-button">
+          <TiArrowBack />
+          Voltar
+        </Link>
+        <section className="product-page">
+          <div className="product-container-details">
+            <h1
+              className="product-detail-name"
+              data-testid="product-detail-name"
+            >
+              { title }
+            </h1>
+            <img
+              className="product-image-details"
+              src={ thumbnail }
+              alt={ title }
+              data-testid="product-detail-image"
+            />
+
+          </div>
+          <div className="product-price-container">
+            <h1 className="product-details-specs">Especificações:</h1>
+            <h4 className="product-details-description">
+              Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Molestiae ducimus architecto
+              dolorem vel nemo, reprehenderit voluptatum quam
+              facilis consequatur quae eos nam, ipsa eligendi
+              similique, reiciendis aliquid. Accusamus, quo ipsum?
+              Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Molestiae ducimus architecto
+              dolorem vel nemo, reprehenderit voluptatum quam
+              facilis consequatur quae eos nam, ipsa eligendi
+              similique, reiciendis aliquid. Accusamus, quo ipsum?
+            </h4>
+            <div className="price-button-container">
+              <h2
+                className="product-detail-price"
+                data-testid="product-detail-price"
+              >
+                { `R$: ${Number(price).toFixed(2)}` }
+              </h2>
+              <CartItemsManipulator
+                itemsQuantity={ itemsQuantity }
+                addItem={ this.addItem }
+                removeItem={ this.removeItem }
+              />
+              <AddButton saveItemStorage={ this.saveItemStorage } />
+            </div>
+          </div>
+        </section>
+        <section className="available-page">
+          <ProductRating id={ id } />
+        </section>
+      </div>
     );
   }
 }
