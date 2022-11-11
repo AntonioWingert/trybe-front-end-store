@@ -60,3 +60,21 @@
   color: white;
   font-size: 30px;
 }
+
+.cart-button-container {
+  display: flex;
+}
+
+.cart-button-span {
+  background-color: rgb(47, 193, 140);
+  border-radius: 100%;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  height: 25px;
+  position: absolute;
+  text-decoration: none;
+  top: 20px;
+  width: 25px;
+
+}

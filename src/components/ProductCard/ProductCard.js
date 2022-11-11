@@ -6,9 +6,11 @@ import './ProductCard.css';
 
 class ProductCard extends Component {
   handleClick = (_e, obj) => {
+    const { updateState } = this.props;
     const data = getLocalStorage();
     const newData = [...data, obj];
     setLocalStorage(JSON.stringify(newData));
+    updateState();
   };
 
   render() {
@@ -51,6 +53,7 @@ ProductCard.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  updateState: PropTypes.func.isRequired,
 };
 
 export default ProductCard;

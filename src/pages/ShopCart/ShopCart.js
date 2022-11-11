@@ -30,11 +30,12 @@ class ShopCart extends Component {
 
   render() {
     const { buyList } = this.state;
+    const itemsOnCart = Number(buyList.length);
 
     if (buyList.length < 1) {
       return (
         <div>
-          <Header />
+          <Header itemsOnCart={ itemsOnCart } />
           <span
             data-testid="shopping-cart-empty-message"
             className="cart-text"
@@ -48,24 +49,22 @@ class ShopCart extends Component {
 
     return (
       <main>
-        <Header />
-        <section>
-          <div>
-            {
-              buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
-                <CartList
-                  key={ title }
-                  id={ productID }
-                  price={ price }
-                  title={ title }
-                  thumbnail={ thumbnail }
-                  itemsQuantity={ itemsQuantity }
-                  handleDelete={ (e, str) => this.handleDelete(e, str) }
-                />))
-            }
-          </div>
-          <Link to="/checkout" data-testid="checkout-products">Finalizar</Link>
-        </section>
+        <Header itemsOnCart={ itemsOnCart } />
+        <span>
+          {
+            buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
+              <CartList
+                key={ title }
+                id={ productID }
+                price={ price }
+                title={ title }
+                thumbnail={ thumbnail }
+                itemsQuantity={ itemsQuantity }
+                handleDelete={ (e, str) => this.handleDelete(e, str) }
+              />))
+          }
+
+        </span>
       </main>
     );
   }
