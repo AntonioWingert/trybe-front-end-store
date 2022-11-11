@@ -16,7 +16,6 @@ class ProductRating extends Component {
 
   componentDidMount() {
     const { id } = this.props;
-    console.log(id);
     if (localStorage[id]) {
       const savedStorage = JSON.parse(localStorage.getItem(id));
       this.setState({ formStorage: savedStorage });

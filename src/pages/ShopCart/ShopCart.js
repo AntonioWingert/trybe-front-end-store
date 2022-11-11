@@ -22,7 +22,6 @@ class ShopCart extends Component {
 
   handleDelete = (_e, id) => {
     const { buyList } = this.state;
-    console.log(id);
     const newList = buyList.filter((item) => item.productID !== id);
     setLocalStorage(JSON.stringify(newList));
     this.setState({ buyList: newList });

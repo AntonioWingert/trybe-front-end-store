@@ -7,7 +7,7 @@ import CartItemsManipulator from
   '../../components/CartItemsManipulator/CartItemsManipulator';
 import { setLocalStorage, getLocalStorage } from '../../services/LocalStorage';
 import AddButton from '../../components/AddButton/AddButton';
-// undo
+
 class ProductDetails extends Component {
   state = {
     price: 0,
