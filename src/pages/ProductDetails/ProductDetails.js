@@ -19,12 +19,22 @@ class ProductDetails extends Component {
     productID: '',
     itemsQuantity: 1,
     itemsOnCart: 0,
+    freeShipping: false,
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    const { title, price, thumbnail } = await getProductById(id);
-    this.setState({ title, price, thumbnail, productID: id });
+    const {
+      title,
+      price,
+      thumbnail, shipping: { free_shipping: freeShipping } } = await getProductById(id);
+    this.setState({
+      title,
+      price,
+      thumbnail,
+      productID: id,
+      freeShipping,
+    });
     this.updateState();
   }
 
@@ -35,13 +45,15 @@ class ProductDetails extends Component {
   };
 
   saveItemStorage = () => {
-    const { price, title, thumbnail, itemsQuantity, productID } = this.state;
+    const { price,
+      title, thumbnail, itemsQuantity, productID, freeShipping } = this.state;
     const objItem = {
       price,
       title,
       thumbnail,
       itemsQuantity,
       productID,
+      freeShipping,
     };
     const localStorage = getLocalStorage();
     const newLocalStorage = [...localStorage, objItem];
@@ -59,7 +71,8 @@ class ProductDetails extends Component {
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { price, title, thumbnail, itemsQuantity, itemsOnCart } = this.state;
+    const {
+      price, title, thumbnail, itemsQuantity, itemsOnCart, freeShipping } = this.state;
     return (
       <div>
         <Header itemsOnCart={ itemsOnCart } />
@@ -97,6 +110,11 @@ class ProductDetails extends Component {
               facilis consequatur quae eos nam, ipsa eligendi
               similique, reiciendis aliquid. Accusamus, quo ipsum?
             </h4>
+            { freeShipping && <img
+              className="free-shipping-image"
+              src="https://img.icons8.com/ios/500/free-shipping.png"
+              alt="frete gratis"
+            />}
             <div className="price-button-container">
               <h2
                 className="product-detail-price"
