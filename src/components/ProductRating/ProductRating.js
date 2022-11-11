@@ -78,32 +78,37 @@ class ProductRating extends Component {
     return (
       <>
         <section className="form-card">
-          <div>
-            <input
-              type="email"
-              name="email"
-              data-testid="product-detail-email"
-              placeholder="E-mail"
-              onChange={ this.handleChange }
-              value={ email }
-            />
-            <div className="product-rating-div">
-              { showStars }
+          <h1 className="form-title">Avaliações</h1>
+          <div className="wrap-inputs">
+            <div className="form-input-container">
+              <input
+                type="email"
+                name="email"
+                data-testid="product-detail-email"
+                placeholder="E-mail"
+                onChange={ this.handleChange }
+                value={ email }
+                className="product-detail-email"
+              />
+              <div className="product-rating-div">
+                { showStars }
+              </div>
             </div>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Mensagem (opcional)"
+              data-testid="product-detail-evaluation"
+              onChange={ this.handleChange }
+              value={ description }
+              className="product-detail-description"
+            />
           </div>
-          <textarea
-            name="description"
-            id="description"
-            placeholder="Descrição"
-            data-testid="product-detail-evaluation"
-            onChange={ this.handleChange }
-            value={ description }
-          />
-          <br />
           <button
             type="button"
             data-testid="submit-review-btn"
             onClick={ this.handleClick }
+            className="button-product-description"
           >
             Avaliar
           </button>
@@ -117,14 +122,32 @@ class ProductRating extends Component {
         </section>
         <section>
           {formStorage.length > 0 && (
-            <div>
+            <div className="available-comments-container">
               {formStorage.map((item) => (
                 <div key={ item.email } className="description-card">
                   <div className="email-rating-card">
-                    <h4 data-testid="review-card-email">{item.email}</h4>
-                    <h5 data-testid="review-card-rating">{item.rating}</h5>
+                    <h4
+                      className="review-card-email"
+                      data-testid="review-card-email"
+                    >
+                      {item.email}
+
+                    </h4>
+                    <h5
+                      className="review-card-rating"
+                      data-testid="review-card-rating"
+                    >
+                      {item.rating}
+
+                    </h5>
                   </div>
-                  <p data-testid="review-card-evaluation">{item.description}</p>
+                  <p
+                    className="review-card-evaluation"
+                    data-testid="review-card-evaluation"
+                  >
+                    {item.description}
+
+                  </p>
                 </div>
               ))}
             </div>
