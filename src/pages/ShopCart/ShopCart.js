@@ -29,11 +29,12 @@ class ShopCart extends Component {
 
   render() {
     const { buyList } = this.state;
+    const itemsOnCart = Number(buyList.length);
 
     if (buyList.length < 1) {
       return (
         <div>
-          <Header />
+          <Header itemsOnCart={ itemsOnCart } />
           <span
             data-testid="shopping-cart-empty-message"
             className="cart-text"
@@ -47,7 +48,7 @@ class ShopCart extends Component {
 
     return (
       <main>
-        <Header />
+        <Header itemsOnCart={ itemsOnCart } />
         <span>
           {
             buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (

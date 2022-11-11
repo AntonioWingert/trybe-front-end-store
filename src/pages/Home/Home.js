@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import { getProductsFromQuery, getProductsFromCategory } from '../../services/api';
 import './Home.css';
 import ListResults from '../../components/ListResults/ListResults';
+import { getLocalStorage } from '../../services/LocalStorage';
 
 class Home extends Component {
   state = {
@@ -11,6 +12,17 @@ class Home extends Component {
     query: '',
     searchResults: [],
     checkSearch: 0,
+    itemsOnCart: 0,
+  };
+
+  componentDidMount() {
+    this.updateState();
+  }
+
+  updateState = () => {
+    const localStorage = getLocalStorage();
+    const localLength = Number(localStorage.length);
+    this.setState({ itemsOnCart: localLength });
   };
 
   handleChange = ({ target }) => {
@@ -29,7 +41,7 @@ class Home extends Component {
   };
 
   render() {
-    const { productsList, query, searchResults, checkSearch } = this.state;
+    const { productsList, query, searchResults, checkSearch, itemsOnCart } = this.state;
     const validProducts = productsList.length < 1;
 
     return (
@@ -41,6 +53,7 @@ class Home extends Component {
                 query={ query }
                 handleChange={ this.handleChange }
                 handleClick={ this.handleClick }
+                itemsOnCart={ itemsOnCart }
               />
               <section className="main-container">
                 <ListCategories returnState={ (e, id) => this.returnState(e, id) } />
@@ -62,6 +75,7 @@ class Home extends Component {
                   : (
                     <ListResults
                       searchResults={ searchResults }
+                      updateState={ this.updateState }
                     />)}
               </section>
             </>

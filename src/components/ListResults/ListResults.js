@@ -5,7 +5,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 export default class ListResults extends Component {
   render() {
-    const { searchResults } = this.props;
+    const { searchResults, updateState } = this.props;
     const renderResults = searchResults.map(({ id, title, price, thumbnail }) => (
       <ProductCard
         key={ id }
@@ -13,6 +13,7 @@ export default class ListResults extends Component {
         title={ title }
         price={ price }
         thumbnail={ thumbnail }
+        updateState={ updateState }
       />
     ));
 
@@ -35,4 +36,5 @@ ListResults.propTypes = {
       thumbnail: PropTypes.string.isRequired,
     }),
   ),
+  updateState: PropTypes.func.isRequired,
 };
