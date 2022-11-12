@@ -5,14 +5,24 @@ import StateManipulator from '../StateManipulator/StateManipulator';
 
 class CartList extends Component {
   render() {
-    const { price, title, thumbnail, itemsQuantity, handleDelete, id } = this.props;
+    const {
+      price,
+      title,
+      thumbnail,
+      itemsQuantity,
+      availableQuantity,
+      handleDelete,
+      id } = this.props;
     return (
       <main>
         <h1>
           <div className="product-container">
             <img src={ thumbnail } alt={ title } />
             <span data-testid="shopping-cart-product-name">{title}</span>
-            <StateManipulator itemsQuantity={ itemsQuantity } />
+            <StateManipulator
+              itemsQuantity={ itemsQuantity }
+              availableQuantity={ availableQuantity }
+            />
             {price}
             <button
               type="button"
@@ -38,6 +48,7 @@ CartList.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   itemsQuantity: PropTypes.number.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
 

@@ -9,7 +9,8 @@ export default class ListResults extends Component {
     const renderResults = searchResults
       .map(({
         id, title, price, thumbnail,
-        shipping: { free_shipping: freeShipping } }) => (
+        shipping: { free_shipping: freeShipping },
+        available_quantity: availableQuantity }) => (
         (
           <ProductCard
             key={ id }
@@ -19,6 +20,7 @@ export default class ListResults extends Component {
             thumbnail={ thumbnail }
             updateState={ updateState }
             isFreeShipping={ isFreeShipping(freeShipping) }
+            availableQuantity={ availableQuantity }
           />
         )
       ));

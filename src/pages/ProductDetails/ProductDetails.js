@@ -20,6 +20,7 @@ class ProductDetails extends Component {
     itemsQuantity: 1,
     itemsOnCart: 0,
     freeShipping: false,
+    availableQuantity: 0,
   };
 
   async componentDidMount() {
@@ -27,13 +28,16 @@ class ProductDetails extends Component {
     const {
       title,
       price,
-      thumbnail, shipping: { free_shipping: freeShipping } } = await getProductById(id);
+      thumbnail,
+      available_quantity: availableQuantity,
+      shipping: { free_shipping: freeShipping } } = await getProductById(id);
     this.setState({
       title,
       price,
       thumbnail,
       productID: id,
       freeShipping,
+      availableQuantity,
     });
     this.updateState();
   }
@@ -45,8 +49,14 @@ class ProductDetails extends Component {
   };
 
   saveItemStorage = () => {
-    const { price,
-      title, thumbnail, itemsQuantity, productID, freeShipping } = this.state;
+    const {
+      price,
+      title,
+      thumbnail,
+      itemsQuantity,
+      productID,
+      freeShipping,
+      availableQuantity } = this.state;
     const objItem = {
       price,
       title,
@@ -54,6 +64,7 @@ class ProductDetails extends Component {
       itemsQuantity,
       productID,
       freeShipping,
+      availableQuantity,
     };
     const localStorage = getLocalStorage();
     const newLocalStorage = [...localStorage, objItem];
@@ -72,7 +83,14 @@ class ProductDetails extends Component {
   render() {
     const { match: { params: { id } } } = this.props;
     const {
-      price, title, thumbnail, itemsQuantity, itemsOnCart, freeShipping } = this.state;
+      price,
+      title,
+      thumbnail,
+      itemsQuantity,
+      itemsOnCart,
+      freeShipping,
+      availableQuantity } = this.state;
+    console.log(availableQuantity);
     return (
       <div>
         <Header itemsOnCart={ itemsOnCart } />
