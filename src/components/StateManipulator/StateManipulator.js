@@ -5,7 +5,7 @@ import './StateManipulator.css';
 class StateManipulator extends Component {
   state = {
     items: 1,
-    maxItems: 100,
+    maxItems: 9999,
   };
 
   componentDidMount() {
