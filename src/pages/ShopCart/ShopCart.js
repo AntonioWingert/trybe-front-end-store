@@ -53,7 +53,14 @@ class ShopCart extends Component {
         <section>
           <div>
             {
-              buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
+              buyList.map(({
+                price,
+                title,
+                thumbnail,
+                itemsQuantity,
+                productID,
+                availableQuantity,
+              }) => (
                 <CartList
                   key={ title }
                   id={ productID }
@@ -61,6 +68,7 @@ class ShopCart extends Component {
                   title={ title }
                   thumbnail={ thumbnail }
                   itemsQuantity={ itemsQuantity }
+                  availableQuantity={ availableQuantity }
                   handleDelete={ (e, str) => this.handleDelete(e, str) }
                 />))
             }

@@ -5,15 +5,19 @@ import './StateManipulator.css';
 class StateManipulator extends Component {
   state = {
     items: 1,
+    maxItems: 9999,
   };
 
   componentDidMount() {
-    const { itemsQuantity } = this.props;
-    this.setState({ items: itemsQuantity });
+    const { itemsQuantity, availableQuantity } = this.props;
+    this.setState({ items: Number(itemsQuantity), maxItems: Number(availableQuantity) });
   }
 
   addItem = () => {
-    this.setState((state) => ({ items: state.items + 1 }));
+    const { maxItems, items } = this.state;
+    if (maxItems > items) {
+      this.setState((state) => ({ items: state.items + 1 }));
+    }
   };
 
   removeItem = () => {
@@ -50,6 +54,7 @@ class StateManipulator extends Component {
 
 StateManipulator.propTypes = {
   itemsQuantity: PropTypes.number.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
 };
 
 export default StateManipulator;
