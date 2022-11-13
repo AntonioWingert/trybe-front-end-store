@@ -5,7 +5,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 export default class ListResults extends Component {
   render() {
-    const { searchResults, updateState, isFreeShipping } = this.props;
+    const { searchResults, updateState, isFreeShipping, returnFilter } = this.props;
     const renderResults = searchResults
       .map(({
         id, title, price, thumbnail,
@@ -26,9 +26,19 @@ export default class ListResults extends Component {
       ));
 
     return (
-      <div className="list-container">
-        { renderResults.length > 0 && renderResults }
-      </div>
+      <section>
+        <div>
+          <select name="sort-products" id="sort-products" onChange={ returnFilter }>
+            <option value="">Filtros</option>
+            <option value="cheapest">Menor Preço</option>
+            <option value="priciest">Maior Preço</option>
+            <option value="free">Frete Grátis</option>
+          </select>
+        </div>
+        <div className="list-container">
+          { renderResults.length > 0 && renderResults }
+        </div>
+      </section>
     );
   }
 }
@@ -46,4 +56,5 @@ ListResults.propTypes = {
   ),
   updateState: PropTypes.func.isRequired,
   isFreeShipping: PropTypes.func.isRequired,
+  returnFilter: PropTypes.func.isRequired,
 };
