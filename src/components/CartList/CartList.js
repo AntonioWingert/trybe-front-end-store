@@ -6,7 +6,14 @@ import StateManipulator from '../StateManipulator/StateManipulator';
 
 class CartList extends Component {
   render() {
-    const { price, title, thumbnail, itemsQuantity, handleDelete, id } = this.props;
+    const {
+      price,
+      title,
+      thumbnail,
+      itemsQuantity,
+      availableQuantity,
+      handleDelete,
+      id } = this.props;
     return (
       <div className="product-container">
         <button
@@ -31,7 +38,6 @@ class CartList extends Component {
           {`R$: ${Number(price).toFixed(2)}`}
 
         </p>
-
       </div>
     );
   }
@@ -47,6 +53,7 @@ CartList.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   itemsQuantity: PropTypes.number.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
 

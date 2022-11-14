@@ -59,7 +59,14 @@ class ShopCart extends Component {
           <div className="cart-container">
             <h1 className="title-cart">Carrinho de Compras</h1>
             {
-              buyList.map(({ price, title, thumbnail, itemsQuantity, productID }) => (
+              buyList.map(({
+                price,
+                title,
+                thumbnail,
+                itemsQuantity,
+                productID,
+                availableQuantity,
+              }) => (
                 <CartList
                   key={ title }
                   id={ productID }
@@ -67,6 +74,7 @@ class ShopCart extends Component {
                   title={ title }
                   thumbnail={ thumbnail }
                   itemsQuantity={ itemsQuantity }
+                  availableQuantity={ availableQuantity }
                   handleDelete={ (e, str) => this.handleDelete(e, str) }
                 />))
             }

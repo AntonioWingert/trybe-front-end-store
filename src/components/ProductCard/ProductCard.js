@@ -14,8 +14,19 @@ class ProductCard extends Component {
   };
 
   render() {
-    const { title, price, thumbnail, id: productID, isFreeShipping } = this.props;
-    const sendObj = { title, price, thumbnail, productID, itemsQuantity: 1 };
+    const { title,
+      price,
+      thumbnail,
+      id: productID,
+      isFreeShipping,
+      availableQuantity } = this.props;
+    const sendObj = {
+      title,
+      price,
+      thumbnail,
+      productID,
+      itemsQuantity: 1,
+      availableQuantity };
     return (
       <div
         data-testid="product"
@@ -49,13 +60,18 @@ class ProductCard extends Component {
   }
 }
 
+ProductCard.defaultProps = {
+  isFreeShipping: {},
+};
+
 ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
-  isFreeShipping: PropTypes.string.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
+  isFreeShipping: PropTypes.shape({}),
 };
 
 export default ProductCard;

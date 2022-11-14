@@ -11,6 +11,7 @@ class Home extends Component {
     productsList: [],
     query: '',
     searchResults: [],
+    queryResults: [],
     checkSearch: 0,
     itemsOnCart: 0,
   };
@@ -32,12 +33,33 @@ class Home extends Component {
   handleClick = async () => {
     const { query } = this.state;
     const data = await getProductsFromQuery(query);
-    this.setState({ searchResults: data.results, checkSearch: 1 });
+    this.setState({
+      searchResults: data.results,
+      queryResults: data.results,
+      checkSearch: 1 });
   };
 
   returnState = async (_e, id) => {
     const data = await getProductsFromCategory(id);
-    this.setState({ searchResults: data.results });
+    this.setState({ searchResults: data.results, queryResults: data.results });
+  };
+
+  returnFilter = async (e) => {
+    const { queryResults } = this.state;
+    const { value } = e.target;
+    if (value === 'cheapest') {
+      const newSort = queryResults.sort((a, b) => a.price - b.price);
+      this.setState({ searchResults: newSort });
+    }
+    if (value === 'priciest') {
+      const newSort = queryResults.sort((a, b) => b.price - a.price);
+      this.setState({ searchResults: newSort });
+    }
+    if (value === 'free') {
+      const newSort = queryResults.filter(({ shipping: {
+        free_shipping: freeShipping } }) => freeShipping === true);
+      this.setState({ searchResults: newSort });
+    }
   };
 
   isFreeShipping = (shipParam) => {
@@ -89,6 +111,7 @@ class Home extends Component {
                       searchResults={ searchResults }
                       updateState={ this.updateState }
                       isFreeShipping={ this.isFreeShipping }
+                      returnFilter={ this.returnFilter }
                     />)}
               </section>
             </>
