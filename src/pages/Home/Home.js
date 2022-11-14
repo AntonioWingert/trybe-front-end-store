@@ -42,7 +42,13 @@ class Home extends Component {
 
   isFreeShipping = (shipParam) => {
     if (shipParam === true) {
-      return <p data-testid="free-shipping">Frete Gratis</p>;
+      return (
+        <img
+          src="https://img.icons8.com/ios/500/free-shipping.png"
+          alt="frete-gratis"
+          className="free-shipping-icon"
+          data-testid="free-shipping"
+        />);
     } return null;
   };
 

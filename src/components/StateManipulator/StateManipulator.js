@@ -26,15 +26,7 @@ class StateManipulator extends Component {
   render() {
     const { items } = this.state;
     return (
-      <>
-        <button
-          type="button"
-          onClick={ this.addItem }
-          data-testid="product-increase-quantity"
-        >
-          +
-        </button>
-        <div data-testid="shopping-cart-product-quantity">{ items }</div>
+      <div className="container-state-manipulator">
         <button
           type="button"
           onClick={ this.removeItem }
@@ -42,8 +34,21 @@ class StateManipulator extends Component {
         >
           -
         </button>
+        <div
+          className="item-state-manipulator"
+          data-testid="shopping-cart-product-quantity"
+        >
+          { items }
 
-      </>
+        </div>
+        <button
+          type="button"
+          onClick={ this.addItem }
+          data-testid="product-increase-quantity"
+        >
+          +
+        </button>
+      </div>
     );
   }
 }

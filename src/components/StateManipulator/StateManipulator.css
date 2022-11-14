@@ -1,3 +1,20 @@
-body {
-  margin: 0;
+.container-state-manipulator {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.container-state-manipulator button {
+  color: #b0b3bb;
+  font-size: 25px;
+}
+
+.item-state-manipulator {
+  background-color: #b0b3bb;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 20px;
 }
