@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TiArrowBack } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import CartList from '../../components/CartList/CartList';
 import Header from '../../components/Header/Header';
@@ -34,11 +35,11 @@ class ShopCart extends Component {
 
     if (buyList.length < 1) {
       return (
-        <div>
+        <div className="empty-container-cart">
           <Header itemsOnCart={ itemsOnCart } />
           <span
             data-testid="shopping-cart-empty-message"
-            className="cart-text"
+            className="empty-cart-text"
           >
             Seu carrinho está vazio
 
@@ -50,8 +51,13 @@ class ShopCart extends Component {
     return (
       <main>
         <Header itemsOnCart={ itemsOnCart } />
-        <section>
-          <div>
+        <Link to="/" className="return-button">
+          <TiArrowBack />
+          Voltar
+        </Link>
+        <div className="main-cart-container">
+          <div className="cart-container">
+            <h1 className="title-cart">Carrinho de Compras</h1>
             {
               buyList.map(({
                 price,
@@ -73,8 +79,18 @@ class ShopCart extends Component {
                 />))
             }
           </div>
-          <Link to="/checkout" data-testid="checkout-products">Finalizar</Link>
-        </section>
+          <div className="cart-checkout">
+            <Link
+              to="/checkout"
+              className="cart-checkout-link"
+              data-testid="checkout-products"
+            >
+              Finalizar Compra
+
+            </Link>
+          </div>
+
+        </div>
       </main>
     );
   }

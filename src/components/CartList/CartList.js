@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import './CartList.css';
 import StateManipulator from '../StateManipulator/StateManipulator';
 
@@ -14,26 +15,30 @@ class CartList extends Component {
       handleDelete,
       id } = this.props;
     return (
-      <main>
-        <h1>
-          <div className="product-container">
-            <img src={ thumbnail } alt={ title } />
-            <span data-testid="shopping-cart-product-name">{title}</span>
-            <StateManipulator
-              itemsQuantity={ itemsQuantity }
-              availableQuantity={ availableQuantity }
-            />
-            {price}
-            <button
-              type="button"
-              data-testid="remove-product"
-              onClick={ (e) => handleDelete(e, id) }
-            >
-              X
-            </button>
-          </div>
-        </h1>
-      </main>
+      <div className="product-container">
+        <button
+          type="button"
+          data-testid="remove-product"
+          onClick={ (e) => handleDelete(e, id) }
+          className="product-delete"
+        >
+          <RiDeleteBin5Line />
+        </button>
+        <img src={ thumbnail } alt={ title } />
+        <p
+          className="product-name"
+          data-testid="shopping-cart-product-name"
+        >
+          {title}
+
+        </p>
+        <StateManipulator itemsQuantity={ itemsQuantity } />
+        <p className="price-product">
+
+          {`R$: ${Number(price).toFixed(2)}`}
+
+        </p>
+      </div>
     );
   }
 }

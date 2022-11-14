@@ -1,8 +1,37 @@
 .product-container {
+  align-items: center;
+  border-top: 1px solid #94979d;
   display: flex;
-  width: 40%;
+  justify-content: center;
+  margin: auto;
+  padding: 25px;
+  width: 85%;
 }
 
-h1 {
-  font-size: 20px;
+.product-container img {
+  height: 100px;
+  margin: auto;
+  width: 100px;
+}
+
+.product-delete {
+  align-items: center;
+  font-size: 40px;
+  justify-content: center;
+  margin: auto;
+}
+
+.product-name {
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+
+}
+
+.price-product {
+  align-items: center;
+  font-size: 15px;
+  text-align: center;
+  width: 15%;
 }
