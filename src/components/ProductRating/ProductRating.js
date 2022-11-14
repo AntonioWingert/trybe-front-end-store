@@ -52,7 +52,6 @@ class ProductRating extends Component {
 
     const createRatingStars = (number) => {
       const { rating } = this.state;
-      console.log(rating);
       const tempRating = [];
       for (let i = 1; i <= number; i += 1) {
         tempRating.push(rating >= i
