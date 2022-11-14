@@ -26,10 +26,15 @@ export default class ListResults extends Component {
       ));
 
     return (
-      <section>
-        <div>
-          <select name="sort-products" id="sort-products" onChange={ returnFilter }>
-            <option value="">Filtros</option>
+      <section className="main-list-results">
+        <div className="select-list-results">
+          <select
+            className="select-results"
+            name="sort-products"
+            id="sort-products"
+            onChange={ returnFilter }
+          >
+            <option value="">Ordenar por preço</option>
             <option value="cheapest">Menor Preço</option>
             <option value="priciest">Maior Preço</option>
             <option value="free">Frete Grátis</option>

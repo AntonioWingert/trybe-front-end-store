@@ -32,7 +32,10 @@ class CartList extends Component {
           {title}
 
         </p>
-        <StateManipulator itemsQuantity={ itemsQuantity } />
+        <StateManipulator
+          itemsQuantity={ itemsQuantity }
+          availableQuantity={ availableQuantity }
+        />
         <p className="price-product">
 
           {`R$: ${Number(price).toFixed(2)}`}

@@ -3,3 +3,24 @@
   flex-wrap: wrap;
   width: 100%;
 }
+
+.main-list-results {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.select-list-results {
+  text-align: end;
+}
+
+.select-results {
+  border: 1px solid #94979d;
+  color: #94979d;
+  margin: 10px;
+  margin-right: 9%;
+  outline: none;
+  padding: 10px;
+  width: 20%;
+}
