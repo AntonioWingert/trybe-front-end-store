@@ -31,7 +31,7 @@ class Header extends Component {
           </div>
           <Link to="/" className="title-container">
             <h1 className="title">FRONT-END</h1>
-            <h3 className="sub-title">online store</h3>
+            <h3 className="sub-title">Online Store</h3>
           </Link>
           <div className="cart-button-container">
             <Link
