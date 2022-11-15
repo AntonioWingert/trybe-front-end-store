@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import './ProductRating.css';
 
@@ -8,7 +8,7 @@ const RATING = 5;
 class ProductRating extends Component {
   state = {
     email: '',
-    rating: '',
+    rating: 0,
     description: '',
     error: false,
     formStorage: [],
@@ -27,18 +27,9 @@ class ProductRating extends Component {
     this.setState({ [name]: value });
   };
 
-  validateForm = () => {
-    const { email, rating } = this.state;
-    if (!email || !rating || !email.includes('@')) {
-      this.setState({ error: true });
-    } else {
-      this.setState({ error: false });
-    }
-  };
-
   handleRating = (e) => {
-    const { id } = e.target;
-    this.setState({ rating: id }, this.validateForm);
+    const { id } = e.currentTarget;
+    this.setState({ rating: id });
   };
 
   handleClick = () => {
@@ -60,15 +51,18 @@ class ProductRating extends Component {
     const { email, description, error, formStorage } = this.state;
 
     const createRatingStars = (number) => {
+      const { rating } = this.state;
       const tempRating = [];
       for (let i = 1; i <= number; i += 1) {
-        tempRating.push(<AiOutlineStar
-          key={ `${i}` }
-          className="product-rating"
-          data-testid={ `${i}-rating` }
-          id={ `${i}` }
-          onClick={ this.handleRating }
-        />);
+        tempRating.push(
+          <AiFillStar
+            key={ i }
+            className={ rating >= i ? 'product-rating orange' : 'product-rating' }
+            data-testid={ `${i}-rating` }
+            id={ i }
+            onClick={ this.handleRating }
+          />,
+        );
       }
       return tempRating;
     };

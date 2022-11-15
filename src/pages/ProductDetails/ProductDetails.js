@@ -88,9 +88,7 @@ class ProductDetails extends Component {
       thumbnail,
       itemsQuantity,
       itemsOnCart,
-      freeShipping,
-      availableQuantity } = this.state;
-    console.log(availableQuantity);
+      freeShipping } = this.state;
     return (
       <div>
         <Header itemsOnCart={ itemsOnCart } />
