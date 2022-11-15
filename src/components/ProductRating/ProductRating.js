@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import './ProductRating.css';
 
@@ -28,7 +28,7 @@ class ProductRating extends Component {
   };
 
   handleRating = (e) => {
-    const { id } = e.target;
+    const { id } = e.currentTarget;
     this.setState({ rating: id });
   };
 
@@ -54,23 +54,15 @@ class ProductRating extends Component {
       const { rating } = this.state;
       const tempRating = [];
       for (let i = 1; i <= number; i += 1) {
-        tempRating.push(rating >= i
-          ? (
-            <AiFillStar
-              key={ i }
-              className="product-rating"
-              data-testid={ `${i}-rating` }
-              id={ i }
-              onClick={ this.handleRating }
-            />)
-          : (
-            <AiOutlineStar
-              key={ i }
-              className="product-rating"
-              data-testid={ `${i}-rating` }
-              id={ i }
-              onClick={ this.handleRating }
-            />));
+        tempRating.push(
+          <AiFillStar
+            key={ i }
+            className={ rating >= i ? 'product-rating orange' : 'product-rating' }
+            data-testid={ `${i}-rating` }
+            id={ i }
+            onClick={ this.handleRating }
+          />,
+        );
       }
       return tempRating;
     };
