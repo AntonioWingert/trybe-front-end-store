@@ -6,18 +6,23 @@ Bem-vindo ao meu repositório de projetos desenvolvidos no curso de formação T
 
 <h1>O que a aplicação propõe?</h1>
 
-<p>--Escrever sobre o aplicativo--</p>
+<p>Uma aplicação desenvolvida em conjunto, é possível acessar e pesquisar sobre um determinado produto, visualizar seus detalhes e adicionar no carrinho, assim como seguir a pagina de checkout e ver o valor total!</p>
 
 <h1>Arquivos desenvolvidos.</h1>
 
-<p>--Arquivos desenvolvidos.--</p>
+<p>Para este projeto fora desenvolvido tanto o React, o CSS, as regras de negócio, divididas entre os companheiros do meu grupo, sendo eles: <br/>
+  <a href="https://github.com/carlosarraes" target="_blanck">Carlos Arraes</a>
+  <a href="https://github.com/CristianoMBecker" target="_blanck">Cristiano Becker</a>
+  <a href="https://github.com/Bernmp-dev" target="_blanck">Bernardo Marques</a>
+  <a href="#">Raul Magno</a>
+</p>
 
 <h1>Como utilizar.</h1>
 
 <p>No gif abaixo você pode encontrar algumas das funcionalidades possíveis na aplicação, para acessa-lá em seu navegador, você pode encontrar o link para acesso ao meu portfólio na sessão abaixo.</p>
 
-<h2 align="center"> inserir gif
-  <img alt="gif-readme" title="nome-projeto" src="./github/"/>
+<h2 align="center">
+  <img alt="gif-readme" title="front-end-store" src="./github/front-end-store.gif"/>
 </h2>
 
 <h1>Portfólio / projetos online.</h1>
